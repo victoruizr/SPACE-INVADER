@@ -1,4 +1,10 @@
 export class marciano extends objeto{
+    constructor(){
 
-    this.hola = "hola";
+    }
+
+    mover(){
+        super.mover();
+        this.y += this.v;
+    }
 }
