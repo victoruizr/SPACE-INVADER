@@ -6,4 +6,8 @@ export class objeto{
         this.w = w;
         this.h = h;
     }
+
+    mover(){
+        this.x += this.v;
+    }
 }
