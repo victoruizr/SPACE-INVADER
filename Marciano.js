@@ -19,7 +19,6 @@ export class marciano {
             var marciano=document.createElementNS("http://www.w3.org/2000/svg","rect");
             marciano.setAttribute("x",this.x);
             marciano.setAttribute("y",this.y);
-            marciano.setAttribute("velocidad",this.v);
             marciano.setAttribute("width",this.w);
             marciano.setAttribute("height",this.h);
 
