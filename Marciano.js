@@ -1,5 +1,5 @@
 export class marciano extends objeto{
-    constructor(x,y,velocidad,w,h,id){
+    constructor(){
         super(this.x,this.y,this.velocidad,this.w,this.h);
         this.id=id;
         this.array=new Array(24);
@@ -17,6 +17,7 @@ export class marciano extends objeto{
             marciano.setAttribute("height",this.h);
             fondo.appendChild(marciano);
             this.array[i]=marciano;
+            this.x = this.x+5;
         }
 
 
