@@ -19,6 +19,12 @@ export class marciano extends objeto{
             this.array[i]=marciano;
         }
 
+        /*Mover Marciano*/
+    moverMarcianos(){
+        
+    }
+
+
 
     }
 
