@@ -7,33 +7,19 @@ export class marciano {
         this.v = v;
         this.w = w;
         this.h = h;
-        this.array = new Array(24);
-/*         this.crearMarciano(); */
-        console.log(document.getElementById("pantalla"));
+        this.fondo = document.getElementById("pantalla");
+        this.crearMarciano();
     }
-/*
-    crearMarciano(){
-        for(var i=0;i<23;i++){
-            Añadiendo Marciano al div
-            var fondo=document.getElementById("pantalla");
-            var marciano=document.createElementNS("http://www.w3.org/2000/svg","rect");
-            marciano.setAttribute("x",this.x);
-            marciano.setAttribute("y",this.y);
-            marciano.setAttribute("velocidad",this.v);
-            marciano.setAttribute("width",this.w);
-            marciano.setAttribute("height",this.h);
+    crearMarciano() {
+        /*  Añadiendo Marciano al div */
+        var marciano = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        marciano.setAttribute("x", this.x);
+        marciano.setAttribute("y", this.y);
+        marciano.setAttribute("width", this.w);
+        marciano.setAttribute("height", this.h);
+        marciano.setAttribute("style", "fill:red");
+        this.fondo.appendChild(marciano);
 
-            this.fondo.appendChild(marciano);
-            Añadiendo marciano al array
-            this.array.push(marciano);
-
-            this.x = this.x+5;
-
-        }
-    }*/
-
-
-
-
-
+        /*  Añadiendo marciano al array */
+    }
 }
