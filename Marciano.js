@@ -3,6 +3,7 @@
 import  {objeto} from "./Objeto.js";
 
 /*---------------------------------------CREACIÓN DE CLASES-----------------------------*/
+
 export class marciano extends objeto{
     constructor(){
         super(this.x,this.y,this.velocidad,this.w,this.h);
