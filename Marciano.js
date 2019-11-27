@@ -11,7 +11,7 @@ export class marciano {
         this.crearMarciano();
     }
     crearMarciano() {
-        /*  Añadiendo Marciano al div */
+        /*  Añadiendo Marciano al svg */
         var marciano = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         marciano.setAttribute("x", this.x);
         marciano.setAttribute("y", this.y);
@@ -19,7 +19,8 @@ export class marciano {
         marciano.setAttribute("height", this.h);
         marciano.setAttribute("style", "fill:red");
         this.fondo.appendChild(marciano);
-
-        /*  Añadiendo marciano al array */
     }
+
+
+
 }
