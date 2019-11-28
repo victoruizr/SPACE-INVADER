@@ -9,10 +9,11 @@ export class nave{
         this.contenedor = document.getElementById("contenedor")
         this.wp = this.contenedor.offsetWidth ;
         this.hp = this.contenedor.offsetHeight;
-        this.nave = document.createElementNS("http://www.w3.org/2000/svg","rect");
+        this.crearNave();
 }
 
     crearNave(){
+        this.nave = document.createElementNS("http://www.w3.org/2000/svg","rect");
         this.nave.setAttribute("x", this.x);
         this.nave.setAttribute("y", this.y);
         this.nave.setAttribute("width", this.w);

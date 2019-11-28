@@ -1,14 +1,11 @@
 import {nave} from "./Nave.js"
 import {marciano} from "./Marciano.js";
-//import {disparo} from "./Disparo.js";
+import {disparo} from "./Disparo.js";
 
 /*------------------------------------VARIABLES---------------------------------*/
-    //Se le pasa x, y, velocidad, ancho y alto
 
-
-
-/* var mar = new marciano(5, 20, 4, 15, 10);  *///Se le pasa x, y, velocidad, ancho y alto
 var nav = new nave(325, 550, 4, 15, 10); // Se le pasa x, y, la velocidad, ancho y alto
+var disp = new disparo(325, 540, 2, 4, 10); // Se le pasa x, y, la velocidad, ancho y alto
 
 /*------------------------------------FUNCIONES---------------------------------*/
 function dibujarYRellenarArray(){
@@ -24,26 +21,24 @@ function dibujarYRellenarArray(){
             if(j == 7){
                 y = y+30; //Esta variable determina el espaciado entre fila y fila
             }
-            indice++;
+            indice++; //Incremento del indice meter el siguiente Marciano
         }
     }
-    console.log(marcianos[18]);
 }
-
-dibujarYRellenarArray();
-
-    function pintarNave(){
-        nav.crearNave();
-    }
 
     function moverNave(){
         nav.moverNave();
     }
 
+    function disparar(){
+        disp.moverDisparo();
+    }
+
 
 /*-----------------------------------EJECUCION----------------------------------*/
-pintarNave();
+dibujarYRellenarArray();
 setInterval(() => { //Se llama a la funcion mover cada 30 centesimas de segundo
+    disparar();
     moverNave();
 }, 30);
 /* crearPantalla(); */

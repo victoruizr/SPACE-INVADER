@@ -12,16 +12,19 @@ export class marciano {
         this.hp = this.contenedor.offsetHeight;
         this.fondo = document.getElementById("pantalla");
         this.crearMarciano();
+        this.intervalo = setInterval(() => { //Se llama a la funcion mover cada 30 centesimas de segundo
+            this.moverMarciano();
+        }, 30);
     }
     crearMarciano() {
         /*  Añadiendo Marciano al svg */
-        var marciano = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        marciano.setAttribute("x", this.x);
-        marciano.setAttribute("y", this.y);
-        marciano.setAttribute("width", this.w);
-        marciano.setAttribute("height", this.h);
-        marciano.setAttribute("style", "fill:red");
-        this.fondo.appendChild(marciano);
+        this.marciano = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        this.marciano.setAttribute("x", this.x);
+        this.marciano.setAttribute("y", this.y);
+        this.marciano.setAttribute("width", this.w);
+        this.marciano.setAttribute("height", this.h);
+        this.marciano.setAttribute("style", "fill:red");
+        this.fondo.appendChild(this.marciano);
     }
 
     moverMarciano(){
@@ -42,5 +45,4 @@ export class marciano {
             this.marciano.setAttribute("x", this.x);
         }
     }
-
 }
