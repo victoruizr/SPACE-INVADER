@@ -7,6 +7,9 @@ export class marciano {
         this.v = v;
         this.w = w;
         this.h = h;
+        this.contenedor = document.getElementById("contenedor");
+        this.wp = this.contenedor.offsetWidth ;
+        this.hp = this.contenedor.offsetHeight;
         this.fondo = document.getElementById("pantalla");
         this.crearMarciano();
     }
@@ -21,6 +24,23 @@ export class marciano {
         this.fondo.appendChild(marciano);
     }
 
+    moverMarciano(){
+        /*MOVER EN EL EJE X*/
+        this.x += this.v;
+        this.marciano.setAttribute("x", this.x);
 
+        if(this.x+this.w > this.wp){
+            this.v = -this.v;
+            this.x += this.v;
+            this.marciano.setAttribute("x", this.x);
+            
+        }
+        
+        if(this.x < 0){
+            this.v = -this.v;
+            this.x += this.v;
+            this.marciano.setAttribute("x", this.x);
+        }
+    }
 
 }
