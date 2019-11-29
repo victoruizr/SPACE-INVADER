@@ -12,9 +12,6 @@ export class marciano {
         this.hp = this.contenedor.offsetHeight;
         this.fondo = document.getElementById("pantalla");
         this.crearMarciano();
-        this.intervalo = setInterval(() => { //Se llama a la funcion mover cada 30 centesimas de segundo
-            this.moverMarciano();
-        }, 30);
     }
     crearMarciano() {
         /*  Añadiendo Marciano al svg */
@@ -34,15 +31,10 @@ export class marciano {
 
         if(this.x+this.w > this.wp){
             this.v = -this.v;
-            this.x += this.v;
-            this.marciano.setAttribute("x", this.x);
-            
         }
         
         if(this.x < 0){
             this.v = -this.v;
-            this.x += this.v;
-            this.marciano.setAttribute("x", this.x);
         }
     }
 }

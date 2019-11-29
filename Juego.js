@@ -38,7 +38,6 @@ function dibujarYRellenarArray(){
 /*-----------------------------------EJECUCION----------------------------------*/
 dibujarYRellenarArray();
 setInterval(() => { //Se llama a la funcion mover cada 30 centesimas de segundo
-    disparar();
     moverNave();
 }, 30);
 /* crearPantalla(); */
