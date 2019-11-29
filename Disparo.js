@@ -7,6 +7,7 @@ export class disparo{
         this.h=h;
         this.pantalla = document.getElementById("pantalla");
         this.crearDisparo();
+        this.moverDisparo();
     }
 
     crearDisparo() {
@@ -17,6 +18,7 @@ export class disparo{
         this.disparo.setAttribute("width", this.w);
         this.disparo.setAttribute("height", this.h);
         this.disparo.setAttribute("style", "fill:purple");
+        this.disparo.setAttribute("id","disparo");
         this.pantalla.appendChild(this.disparo);
     }
 
@@ -24,5 +26,17 @@ export class disparo{
         /*MOVER EN EL EJE Y*/
         this.y -= this.v;
         this.disparo.setAttribute("y", this.y);
+    }
+
+    eliminarDisparo(){
+        return true;
+    }
+
+    obtenerY(){
+        return parseInt(this.disparo.getAttribute("y"));
+    }
+
+    obtenerH(){
+        return parseInt(this.disparo.getAttribute("height"));
     }
 }

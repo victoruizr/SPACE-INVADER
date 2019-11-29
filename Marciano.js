@@ -24,6 +24,7 @@ export class marciano {
         this.marciano.setAttribute("width", this.w);
         this.marciano.setAttribute("height", this.h);
         this.marciano.setAttribute("style", "fill:red");
+        
         this.fondo.appendChild(this.marciano);
     }
 
