@@ -7,7 +7,7 @@ export class nave{
         this.h=h;
         this.pantalla = document.getElementById("pantalla");
         this.contenedor = document.getElementById("contenedor")
-        this.wp = this.contenedor.offsetWidth ;
+        this.wp = this.contenedor.offsetWidth;
         this.hp = this.contenedor.offsetHeight;
         this.crearNave();
 }
