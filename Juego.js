@@ -9,7 +9,6 @@ export class juego {
     constructor() {
         this.h = this.offsetHeight;
         this.w = this.offsetWidth;
-        this.d = true;
         this.marcianos = new Array(24);
         this.crearObjetos();
         this.iniciar();
@@ -36,46 +35,62 @@ export class juego {
         }
     }
 
-    controlMovimiento(e) {
-        if (e.keyCode == 87) {
-            this.d = true;
-            if (this.disp == undefined) {
-                this.disp = new disparo(325, 540, 2, 4, 10);
-                console.log("w");
-            } else {
-                this.d = false;
-            }
-        }
-    }
-
     crearObjetos() {
-        var nav = new nave(325, 550, 4, 15, 10); // Se le pasa x, y, la velocidad, ancho y alto
+        this.nav = new nave(320, 550, 4, 30,10,"navecita"); // Se le pasa x, y, la velocidad, ancho y alto
         // Se le pasa x, y, la velocidad, ancho y alto
         this.dibujarYRellenarArray();
     }
 
+    controlMovimiento(e) {
+        //Una vez obtengo el evento comprueba si el keydown es la tecla
+        //d en Assci
+        if (e.keyCode == 87) {
+            //En este caso en el caso de que el disparo no este creade
+            //creo uno
+            if (this.disp == undefined) {
+                this.disp = new disparo(325, 540, 2, 4, 10);
+                /* console.log("w"); */
+            }
+        }
+        
+        //Si la tecla en ascci es la a llamo a mover nave izquierda
+        if (e.keyCode == 65) {
+            /* console.log("a"); */
+            this.nav.moverNaveIzquierda();
+        }
+        //Si la tecla en ascci es la a llamo a mover nave derecha
+        if (e.keyCode == 68) {
+            /* console.log("d"); */
+            this.nav.moverNaveDerecha();
+        }
+    }
+
+
     iniciar() {
+        //Añado un keydown y se lo paso a la funcion controlMovimiento como parametro, en este caso e
         document.addEventListener("keydown", (e) => { this.controlMovimiento(e) });
-        setInterval(() => 
-            {
+        setInterval(() => {
+            //Esto lo que hace es que no te deja lanzar otro disparo hasta que este no desaparezca
             if (this.disp != undefined) {
+                //En caso de que no este creado lo creo
                 this.disp.moverDisparo();
             }
-            if((this.disp!=undefined)&&(this.disp.obtenerY()+this.disp.obtenerH()<=0))
-            {
-                this.disp=undefined;
+            //En el caso de que el disparo este creado y este haya llegado a la y se pone undefined
+            //para que podamos crear otros
+            if ((this.disp != undefined) && (this.disp.obtenerY() + this.disp.obtenerH() <= 0)) {
+                this.disp = undefined;
             }
         }, 10);
     }
 
-    moverMarcianos(){ // Hay que retocar esta funcion
+    moverMarcianos() { // Hay que retocar esta funcion
         //Para cada marciano
-        if(this.marcianos[0].x < 0){
-            for(let mar of this.marcianos){
+        if (this.marcianos[0].x < 0) {
+            for (let mar of this.marcianos) {
                 mar.v = -mar.v;
             }
-        }else if(this.marcianos[this.marcianos.length-1].x+this.marcianos[this.marcianos.length-1].w > 650){
-            for(let mar of this.marcianos){
+        } else if (this.marcianos[this.marcianos.length - 1].x + this.marcianos[this.marcianos.length - 1].w > 650) {
+            for (let mar of this.marcianos) {
                 mar.v = -mar.v;
             }
         }
