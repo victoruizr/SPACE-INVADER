@@ -7,8 +7,9 @@ import { disparo } from "./Disparo.js";
 export class juego {
 
     constructor() {
-        this.h = this.offsetHeight;
-        this.w = this.offsetWidth;
+        this.pantalla = document.getElementById("contenedor");
+        this.h = this.pantalla.offsetHeight;
+        this.w = this.pantalla.offsetWidth;
         this.marcianos = new Array(24);
         this.crearObjetos();
         this.iniciar();
@@ -56,11 +57,13 @@ export class juego {
         //Si la tecla en ascci es la a llamo a mover nave izquierda
         if (e.keyCode == 65) {
             /* console.log("a"); */
+            if(this.nav.x > 0)
             this.nav.moverNaveIzquierda();
         }
         //Si la tecla en ascci es la a llamo a mover nave derecha
         if (e.keyCode == 68) {
             /* console.log("d"); */
+            if(this.nav.x + this.nav.w < this.w)
             this.nav.moverNaveDerecha();
         }
     }
