@@ -49,8 +49,7 @@ export class juego {
             //En este caso en el caso de que el disparo no este creade
             //creo uno
             if (this.disp == undefined) {
-                this.disp = new disparo(325, 540, 2, 4, 10);
-                /* console.log("w"); */
+                this.disp = new disparo((this.nav.x+this.nav.w/2), 540, 2, 4, 10); //Se pasa x, y, v, w, h
             }
         }
         
