@@ -1,3 +1,4 @@
+import { nave } from "./Nave.js"
 export class disparo{
     constructor(x, y, v, w, h){
         this.x=x;
@@ -28,15 +29,14 @@ export class disparo{
         this.disparo.setAttribute("y", this.y);
     }
 
-    eliminarDisparo(){
-        return true;
-    }
-
+    //Obtenemos la Y
     obtenerY(){
         return parseInt(this.disparo.getAttribute("y"));
     }
 
+    //Obtenemos la Altura
     obtenerH(){
         return parseInt(this.disparo.getAttribute("height"));
     }
+
 }

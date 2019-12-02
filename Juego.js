@@ -7,8 +7,9 @@ import { disparo } from "./Disparo.js";
 export class juego {
 
     constructor() {
-        this.h = this.offsetHeight;
-        this.w = this.offsetWidth;
+        this.pantalla = document.getElementById("contenedor");
+        this.h = this.pantalla.offsetHeight;
+        this.w = this.pantalla.offsetWidth;
         this.marcianos = new Array(24);
         this.crearObjetos();
         this.iniciar();
@@ -44,23 +45,24 @@ export class juego {
     controlMovimiento(e) {
         //Una vez obtengo el evento comprueba si el keydown es la tecla
         //d en Assci
-        if (e.keyCode == 87) {
+        if ((e.keyCode == 87)|| (e.keyCode == 32) ||(e.keyCode == 38)) {
             //En este caso en el caso de que el disparo no este creade
             //creo uno
             if (this.disp == undefined) {
-                this.disp = new disparo(325, 540, 2, 4, 10);
-                /* console.log("w"); */
+                this.disp = new disparo((this.nav.x+this.nav.w/2), 540, 2, 4, 10); //Se pasa x, y, v, w, h
             }
         }
         
         //Si la tecla en ascci es la a llamo a mover nave izquierda
-        if (e.keyCode == 65) {
+        if ((e.keyCode == 65) || (e.keyCode == 37)) {
             /* console.log("a"); */
+            if(this.nav.x > 0)
             this.nav.moverNaveIzquierda();
         }
         //Si la tecla en ascci es la a llamo a mover nave derecha
-        if (e.keyCode == 68) {
+        if ((e.keyCode == 68) || (e.keyCode == 39)){
             /* console.log("d"); */
+            if(this.nav.x + this.nav.w < this.w)
             this.nav.moverNaveDerecha();
         }
     }
