@@ -1,5 +1,5 @@
 export class nave {
-    constructor(x,y, v, w, h) {
+    constructor(x, y, v, w, h) {
         this.x=x;
         this.y = y;
         this.v = v;
