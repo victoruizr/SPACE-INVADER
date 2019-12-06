@@ -18,7 +18,7 @@ export class disparo{
         this.disparo.setAttribute("y", this.y);
         this.disparo.setAttribute("width", this.w);
         this.disparo.setAttribute("height", this.h);
-        this.disparo.setAttribute("style", "fill:purple");
+        this.disparo.setAttribute("style", "fill:white");
         this.disparo.setAttribute("id","disparo");
         this.pantalla.appendChild(this.disparo);
     }

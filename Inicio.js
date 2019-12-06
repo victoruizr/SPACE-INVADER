@@ -4,4 +4,4 @@ import { disparo } from "./Disparo.js"; */
 import { juego } from "./Juego.js";
 
 
-var  game = new juego();
+var  game = new juego();/*  */
