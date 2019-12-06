@@ -43,4 +43,8 @@ export class marciano {
             this.marciano.setAttribute("x", this.x);
         } */
     }
+
+    borrarMarciano(){
+        document.getElementById("pantalla").removeChild(this.marciano);
+    }
 }

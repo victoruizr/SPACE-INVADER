@@ -7,9 +7,10 @@ import { disparo } from "./Disparo.js";
 export class juego {
 
     constructor() {
-        this.pantalla = document.getElementById("contenedor");
-        this.h = this.pantalla.offsetHeight;
-        this.w = this.pantalla.offsetWidth;
+        this.contenedor = document.getElementById("contenedor");
+        this.pantalla = document.getElementById("pantalla");
+        this.h = this.contenedor.offsetHeight;
+        this.w = this.contenedor.offsetWidth;
         this.marcianos = new Array(24);
         this.crearObjetos();
         this.iniciar();
@@ -20,11 +21,11 @@ export class juego {
 
 
     dibujarYRellenarArray() {
-        var pantalla = document.getElementById("contenedor");
-        var y = pantalla.offsetHeight / 8;
+        var contenedor = document.getElementById("contenedor");
+        var y = contenedor.offsetHeight / 8;
         var indice = 0; //Esta variable va a determinar el indice para cada nuevo Marciano
         for (let i = 0; i < 3; i++) {
-            var x = pantalla.offsetWidth / 3;
+            var x = contenedor.offsetWidth / 3;
             for (let j = 0; j < 8; j++) {
                 this.marcianos[indice] = new marciano(x, y, 4, 15, 15);
                 x = x + 30; // Esta variable determina el espaciado entre marciano y marciano
@@ -37,7 +38,7 @@ export class juego {
     }
 
     crearObjetos() {
-        this.nav = new nave(320, 550, 4, 30,10,"navecita"); // Se le pasa x, y, la velocidad, ancho y alto
+        this.nav = new nave(320, 550, 4, 30, 10); // Se le pasa x, y, la velocidad, ancho y alto
         // Se le pasa x, y, la velocidad, ancho y alto
         this.dibujarYRellenarArray();
     }
@@ -49,7 +50,7 @@ export class juego {
             //En este caso en el caso de que el disparo no este creade
             //creo uno
             if (this.disp == undefined) {
-                this.disp = new disparo((this.nav.x+this.nav.w/2), 540, 2, 4, 10); //Se pasa x, y, v, w, h
+                this.disp = new disparo((this.nav.x+this.nav.w/2), (this.nav.y -10), (this.nav.x+this.nav.w/2), (this.nav.y), 1); //Se pasa x1, y1, x2, y2
             }
         }
         
@@ -76,12 +77,14 @@ export class juego {
             if (this.disp != undefined) {
                 //En caso de que no este creado lo creo
                 this.disp.moverDisparo();
+                this.eliminarMarcianos();
             }
             //En el caso de que el disparo este creado y este haya llegado a la y se pone undefined
             //para que podamos crear otros
-            if ((this.disp != undefined) && (this.disp.obtenerY() + this.disp.obtenerH() <= 0)) {
+            if ((this.disp != undefined) && (this.disp.y2 <= 0)){
+                this.disp.borrarDisparo();
                 this.disp = undefined;
-            }
+            } 
         }, 10);
     }
 
@@ -89,12 +92,25 @@ export class juego {
         //Para cada marciano
         if (this.marcianos[0].x < 0) {
             for (let mar of this.marcianos) {
+                
                 mar.v = -mar.v;
             }
         } else if (this.marcianos[this.marcianos.length - 1].x + this.marcianos[this.marcianos.length - 1].w > 650) {
             for (let mar of this.marcianos) {
                 mar.v = -mar.v;
             }
+        }
+    }
+
+    eliminarMarcianos(){
+        for(let mar of this.marcianos){
+                if(this.disp.x1 >= mar.x && this.disp.y1 <= mar.y){
+                    console.log(mar);
+                    mar.borrarMarciano();
+                    
+                    /*this.disp.borrarDisparo();
+                    this.disp = undefined;*/ 
+                }
         }
     }
 }
