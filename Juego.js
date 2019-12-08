@@ -110,13 +110,19 @@ export class juego {
 
     eliminarMarcianos() {
         try {
-            for (let mar of this.marcianos) {
-                if ((this.disp.x1 > mar.x) && (this.disp.x1 < (mar.x + mar.w)) && (this.disp.y1 > mar.y) && (this.disp.y1 < (mar.y + mar.w))) {
+            for (var i=0;i<this.marcianos.length;i++) {
+                if ((this.disp.x1 > this.marcianos[i].x) && (this.disp.x1 < (this.marcianos[i].x + this.marcianos[i].w)) && (this.disp.y1 > this.marcianos[i].y) && (this.disp.y1 < (this.marcianos[i].y + this.marcianos[i].w))) {
                     this.disp.borrarDisparo();
                     this.disp = undefined;
                     //splice.mar del array
-                    mar.borrarMarciano();
+                   this.marcianos[i].borrarMarciano();
+                   this.marcianos.splice(i,1);
+                    
                 }
+            }
+            if(this.marcianos.length==0){
+                alert("Ha ganado");
+                iniciar();
             }
         }
         catch (error) { }
