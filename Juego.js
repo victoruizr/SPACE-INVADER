@@ -92,18 +92,33 @@ export class juego {
         //Para cada marciano
         for (let mar of this.marcianos) {
             if(mar.x < 0 || (mar.x+mar.w) > this.w){
-                mar.v = -mar.v;
+                for(let i of this.marcianos){
+                    i.v = -i.v;
+                }
             }
         }
+    }
+
+    bombaMarcianos(){
+        let i = 0;
+        console.log(i);
+        let x = this.marcianos[i].x;
+        let w = this.marcianos[i].w;
+        let y = this.marcianos[i].y;
+        this.bomba = new disparo((x + w / 2), (y + 10), (x + w / 2), (y), -4); //Se pasa x1, y1, x2, y2 y v
     }
 
     eliminarMarcianos() {
-        for (let mar of this.marcianos) {
-            if ((this.disp.x1 > mar.x) && (this.disp.x1 < (mar.x + mar.w)) && (this.disp.y1 > mar.y) && (this.disp.y1 < (mar.y + mar.w))) {
-                this.disp.borrarDisparo();
-                mar.borrarMarciano();
+        try {
+            for (let mar of this.marcianos) {
+                if ((this.disp.x1 > mar.x) && (this.disp.x1 < (mar.x + mar.w)) && (this.disp.y1 > mar.y) && (this.disp.y1 < (mar.y + mar.w))) {
+                    this.disp.borrarDisparo();
+                    this.disp = undefined;
+                    //splice.mar del array
+                    mar.borrarMarciano();
+                }
             }
         }
+        catch (error) { }
     }
 }
-

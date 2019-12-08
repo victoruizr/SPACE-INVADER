@@ -37,7 +37,6 @@ export class disparo{
 
     borrarDisparo(){
         this.pantalla.removeChild(this.disparo);
-        this.disparo = undefined;
     }
 
 
