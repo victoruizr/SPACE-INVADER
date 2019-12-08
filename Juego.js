@@ -104,12 +104,13 @@ export class juego {
 
     eliminarMarcianos(){
         for(let mar of this.marcianos){
-                if(this.disp.x1 >= mar.x && this.disp.y1 <= mar.y){
-                    console.log(mar);
+            //
+                if(this.disp.y1 == mar.y){
+                    console.log("Has tocado al pinche puto");
                     mar.borrarMarciano();
                     
-                    /*this.disp.borrarDisparo();
-                    this.disp = undefined;*/ 
+                    this.disp.borrarDisparo();
+                    this.disp = undefined;
                 }
         }
     }
