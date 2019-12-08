@@ -32,19 +32,9 @@ export class marciano {
         /*MOVER EN EL EJE X*/
         this.x += this.v;
         this.marciano.setAttribute("x", this.x);
-
-        /*if (this.x + this.w > this.wp) {
-            this.v = -this.v;
-            this.marciano.setAttribute("x", this.x);
-        }
-
-        if (this.x < 0) {
-            this.v = -this.v;
-            this.marciano.setAttribute("x", this.x);
-        } */
     }
 
     borrarMarciano(){
-        document.getElementById("pantalla").removeChild(this.marciano);
+        this.fondo.removeChild(this.marciano);
     }
 }

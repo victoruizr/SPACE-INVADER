@@ -1,3 +1,4 @@
+import { nave } from "./Nave.js"
 export class disparo{
     constructor(x1, y1, x2, y2, v){
         this.x1=x1;
@@ -35,6 +36,26 @@ export class disparo{
     }
 
     borrarDisparo(){
-        document.getElementById("pantalla").removeChild(this.disparo);
+        this.pantalla.removeChild(this.disparo);
+        this.disparo = undefined;
     }
+
+
+    obtenerX1(){
+        return this.disparo.x1;
+    }
+
+    obtenerX2(){
+        return this.disparo.x2;
+    }
+
+
+    obtenerY1(){
+        return this.y1;
+    }
+
+    obtenerY1(){
+        return this.y2;
+    }
+
 }

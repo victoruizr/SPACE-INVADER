@@ -45,26 +45,26 @@ export class juego {
 
     controlMovimiento(e) {
         //Una vez obtengo el evento comprueba si el keydown es la tecla
-        //d en Assci
-        if ((e.keyCode == 87)|| (e.keyCode == 32) ||(e.keyCode == 38)) {
+        //w en Assci
+        if ((e.keyCode == 87) || (e.keyCode == 32) || (e.keyCode == 38)) {
             //En este caso en el caso de que el disparo no este creade
             //creo uno
             if (this.disp == undefined) {
-                this.disp = new disparo((this.nav.x+this.nav.w/2), (this.nav.y -10), (this.nav.x+this.nav.w/2), (this.nav.y), 1); //Se pasa x1, y1, x2, y2
+                this.disp = new disparo((this.nav.x + this.nav.w / 2), (this.nav.y - 10), (this.nav.x + this.nav.w / 2), (this.nav.y), 1); //Se pasa x1, y1, x2, y2
             }
         }
-        
+
         //Si la tecla en ascci es la a llamo a mover nave izquierda
         if ((e.keyCode == 65) || (e.keyCode == 37)) {
             /* console.log("a"); */
-            if(this.nav.x > 0)
-            this.nav.moverNaveIzquierda();
+            if (this.nav.x > 0)
+                this.nav.moverNaveIzquierda();
         }
         //Si la tecla en ascci es la a llamo a mover nave derecha
-        if ((e.keyCode == 68) || (e.keyCode == 39)){
+        if ((e.keyCode == 68) || (e.keyCode == 39)) {
             /* console.log("d"); */
-            if(this.nav.x + this.nav.w < this.w)
-            this.nav.moverNaveDerecha();
+            if (this.nav.x + this.nav.w < this.w)
+                this.nav.moverNaveDerecha();
         }
     }
 
@@ -81,37 +81,29 @@ export class juego {
             }
             //En el caso de que el disparo este creado y este haya llegado a la y se pone undefined
             //para que podamos crear otros
-            if ((this.disp != undefined) && (this.disp.y2 <= 0)){
+            if ((this.disp != undefined) && (this.disp.y2 <= 0)) {
                 this.disp.borrarDisparo();
                 this.disp = undefined;
-            } 
-        }, 10);
+            }
+        }, 5);
     }
 
     moverMarcianos() { // Hay que retocar esta funcion
         //Para cada marciano
-        if (this.marcianos[0].x < 0) {
-            for (let mar of this.marcianos) {
-                
-                mar.v = -mar.v;
-            }
-        } else if (this.marcianos[this.marcianos.length - 1].x + this.marcianos[this.marcianos.length - 1].w > 650) {
-            for (let mar of this.marcianos) {
+        for (let mar of this.marcianos) {
+            if(mar.x < 0 || (mar.x+mar.w) > this.w){
                 mar.v = -mar.v;
             }
         }
     }
 
-    eliminarMarcianos(){
-        for(let mar of this.marcianos){
-            //
-                if(this.disp.y1 == mar.y){
-                    console.log("Has tocado al pinche puto");
-                    mar.borrarMarciano();
-                    
-                    this.disp.borrarDisparo();
-                    this.disp = undefined;
-                }
+    eliminarMarcianos() {
+        for (let mar of this.marcianos) {
+            if ((this.disp.x1 > mar.x) && (this.disp.x1 < (mar.x + mar.w)) && (this.disp.y1 > mar.y) && (this.disp.y1 < (mar.y + mar.w))) {
+                this.disp.borrarDisparo();
+                mar.borrarMarciano();
+            }
         }
     }
 }
+
