@@ -1,11 +1,11 @@
 import { nave } from "./Nave.js"
 export class disparo{
-    constructor(x, y, v, w, h){
-        this.x=x;
-        this.y=y;
+    constructor(x1, y1, x2, y2, v){
+        this.x1=x1;
+        this.y1=y1;
+        this.x2=x2;
+        this.y2=y2;
         this.v=v;
-        this.w=w;
-        this.h=h;
         this.pantalla = document.getElementById("pantalla");
         this.crearDisparo();
         this.moverDisparo();
@@ -13,30 +13,30 @@ export class disparo{
 
     crearDisparo() {
         /*  Añadiendo Disparo al SVG*/
-        this.disparo = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        this.disparo.setAttribute("x", this.x);
-        this.disparo.setAttribute("y", this.y);
-        this.disparo.setAttribute("width", this.w);
-        this.disparo.setAttribute("height", this.h);
-        this.disparo.setAttribute("style", "fill:white");
+        this.disparo = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        this.disparo.setAttribute("x1", this.x1);
+        this.disparo.setAttribute("y1", this.y1);
+        this.disparo.setAttribute("x2", this.x2);
+        this.disparo.setAttribute("y2", this.y2);
+        this.disparo.setAttribute("style", "stroke:red; stroke-width:4");
         this.disparo.setAttribute("id","disparo");
         this.pantalla.appendChild(this.disparo);
     }
 
     moverDisparo(){
         /*MOVER EN EL EJE Y*/
-        this.y -= this.v;
-        this.disparo.setAttribute("y", this.y);
+        this.y1 -= this.v;
+        this.y2 -= this.v;
+        this.disparo.setAttribute("y1", this.y1);
+        this.disparo.setAttribute("y2", this.y2);
     }
 
-    //Obtenemos la Y
-    obtenerY(){
-        return parseInt(this.disparo.getAttribute("y"));
+    eliminarDisparo(){
+        return true;
     }
 
-    //Obtenemos la Altura
-    obtenerH(){
-        return parseInt(this.disparo.getAttribute("height"));
+    borrarDisparo(){
+        document.getElementById("pantalla").removeChild(this.disparo);
     }
 
 }
