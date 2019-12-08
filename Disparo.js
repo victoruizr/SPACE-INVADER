@@ -39,4 +39,22 @@ export class disparo{
         document.getElementById("pantalla").removeChild(this.disparo);
     }
 
+
+    obtenerX1(){
+        return this.disparo.x1;
+    }
+
+    obtenerX2(){
+        return this.disparo.x2;
+    }
+
+
+    obtenerY1(){
+        return this.y1;
+    }
+
+    obtenerY1(){
+        return this.y2;
+    }
+
 }

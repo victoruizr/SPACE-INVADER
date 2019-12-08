@@ -45,7 +45,7 @@ export class juego {
 
     controlMovimiento(e) {
         //Una vez obtengo el evento comprueba si el keydown es la tecla
-        //d en Assci
+        //w en Assci
         if ((e.keyCode == 87) || (e.keyCode == 32) || (e.keyCode == 38)) {
             //En este caso en el caso de que el disparo no este creade
             //creo uno
@@ -85,7 +85,7 @@ export class juego {
                 this.disp.borrarDisparo();
                 this.disp = undefined;
             }
-        }, 10);
+        }, 5);
     }
 
     moverMarcianos() { // Hay que retocar esta funcion
@@ -103,11 +103,13 @@ export class juego {
     }
 
     eliminarMarcianos() {
-      for (let mar of this.marcianos) {
-            if ((This.disp.x1 > mar.x)&& (this.disp.x1 < (mar.x+mar.ancho))) {
-                console.log(mar);
+        for (let mar of this.marcianos) {
+            if ((this.disp.x1 > mar.x) && (this.disp.x1 < (mar.x + mar.w)) && (this.disp.y1 > mar.y) && (this.disp.y1 < (mar.y + mar.w))) {
+/*                 console.log("Tocado");
+                console.log(mar); */
                 mar.borrarMarciano();
             }
-        } 
+        }
     }
 }
+
