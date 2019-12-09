@@ -17,7 +17,11 @@ export class juego {
         this.intervaloMarcianos = setInterval(() => { //Se llama a la funcion mover cada 30 centesimas de segundo
             this.moverMarcianos();
         }, 30);
-    }
+        this.bombas = setInterval(() => {
+            this.bombaMarcianos();
+        }, 2000);
+
+        }
 
 
     dibujarYRellenarArray() {
@@ -27,7 +31,7 @@ export class juego {
         for (let i = 0; i < 3; i++) {
             var x = contenedor.offsetWidth / 3;
             for (let j = 0; j < 8; j++) {
-                this.marcianos[indice] = new marciano(x, y, 4, 15, 15);
+                this.marcianos[indice] = new marciano(x, y, 2, 15, 15);
                 x = x + 30; // Esta variable determina el espaciado entre marciano y marciano
                 if (j == 7) {
                     y = y + 30; //Esta variable determina el espaciado entre fila y fila
@@ -85,6 +89,16 @@ export class juego {
                 this.disp.borrarDisparo();
                 this.disp = undefined;
             }
+
+            if (this.bomba != undefined){
+                this.bomba.moverDisparo();
+            }
+
+            if ((this.bomba != undefined) && (this.bomba.y2 >= this.h)) {
+                this.bomba.borrarDisparo();
+                this.bomba = undefined;
+            }
+            
         }, 5);
     }
 
@@ -100,12 +114,15 @@ export class juego {
     }
 
     bombaMarcianos(){
-        let i = 0;
+        let i = Math.floor(Math.random() * (this.marcianos.length) + 1);
         console.log(i);
         let x = this.marcianos[i].x;
         let w = this.marcianos[i].w;
         let y = this.marcianos[i].y;
-        this.bomba = new disparo((x + w / 2), (y + 10), (x + w / 2), (y), -4); //Se pasa x1, y1, x2, y2 y v
+        if(this.bomba == undefined){
+            this.bomba = new disparo((x + w / 2), (y + 10), (x + w / 2), (y), -1); //Se pasa x1, y1, x2, y2 y v
+        }
+        
     }
 
     eliminarMarcianos() {
@@ -121,8 +138,12 @@ export class juego {
                 }
             }
             if(this.marcianos.length==0){
+                this.disp.borrarDisparo();
+                this.mensaje = document.createElement("h1");
+                this.mensaje.textContent("¡Has ganado!");
+                this.mensaje.setAttribute("id", "mensaje");
+                this.pantalla.appendChild(this.mensaje);
                 alert("Ha ganado");
-                iniciar();
             }
         }
         catch (error) { }

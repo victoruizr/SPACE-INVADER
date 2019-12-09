@@ -20,3 +20,7 @@ h2{
     width: 650px;
     height: 600px;
 }
+
+#mensaje{
+    color: red;
+}
